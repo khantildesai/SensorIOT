@@ -1,0 +1,52 @@
+{%extends 'base.html' %}
+
+{%block head%}
+<title>DHT Sensor Value</title>
+{%endblock%}
+
+{%block body%}
+<div class="content">
+    <h1 style="text-align: center;">DHT Sensor Value</h1>
+    <script type="text/javascript">
+        window.onload = setupRefresh;
+     
+        function setupRefresh() {
+          setTimeout("refreshPage();", 2000); // milliseconds
+        }
+        function refreshPage() {
+           window.location = location.href;
+        }
+    </script>
+    <table>
+        <tr>
+            <th>Measurement</th>
+            <th>Value</th>
+            <th>Options</th>
+        </tr>
+        {%for face in faces%}
+        <tr>
+            <td>Temperature</td>
+            <td>{{face.temperature_value}} C</td>
+            <td>
+                <a href="/temphistory/">History</a>
+                <br>
+                <a href="/updatetemp/">Options</a>
+                <br>
+                <a href="/temperaturealarm/">Alarm</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Humidity</td>
+            <td>{{face.humidity_value}} %</td>
+            <td>
+                <a href="/humidhistory/">History</a>
+                <br>
+                <a href="/updatehumid/">Options</a>
+                <br>
+                <a href="/humidityalarm/">Alarm</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{%endblock%}

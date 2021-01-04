@@ -1,0 +1,19 @@
+{%extends 'base.html' %}
+
+{%block head%}
+<title>Update Temperature Settings</title>
+{%endblock%}
+
+{%block body%}
+<div class="content">
+    <h1 style="text-align: center;">Update Humidity Settings</h1>
+    {% if setpoints. %}
+    <form action="/updatehumidity/{{setpoints.id}}" method="POST">
+        <input type="number" name="hu" id="hu" value="{{setpoints.hu}}">
+        <input type="number" name="hut" id="hut" value="{{setpoints.ut}}">
+        <input type="number" name="hl" id="hl" value="{{setpoints.hl}}">
+        <input type="number" name="hlt" id="hlt" value="{{setpoints.hlt}}">
+        <input type="submit" value="update">
+    </form>
+</div>
+{%endblock%}

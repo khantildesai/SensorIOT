@@ -1,0 +1,21 @@
+{%extends 'base.html' %}
+
+{%block head%}
+<title>Temperature History</title>
+{%endblock%}
+
+{%block body%}
+<div class="content">
+    <h1 style="text-align: center;">Temperature History</h1>
+    <table>
+        <tr>
+            <th>Temperature</th>
+        </tr>
+        {%for face in faces%}
+        <tr>
+            <td>{{face.temperature_value}} C</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{%endblock%}
